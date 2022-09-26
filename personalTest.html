@@ -9,17 +9,45 @@
     <title>Document</title>
   </head>
   <body>
-    <a-scene background="color: #fafafa">
+    <a-scene background="color: #DE7C5A">
       <a-entity
-        id="box"
-        material="color: orange"
-        geometry="primitive: sphere; radius: 1.5"
-        position="0 1.25 -5"
+        id="candyPile"
+        geometry="primitive: triangle; 
+          vertex-a: 4 0 0; 
+          vertex-b: 0 2 0; 
+          vertex-c: 0 0 4;"
+        material="color: green"
       ></a-entity>
-
+      <a-entity
+        id="wallX"
+        geometry="primitive: box;
+            height: 10;
+            depth: 10;
+            width: 1;"
+        position="-0.5 5 5"
+        material="color: white"
+      ></a-entity>
+      <a-entity
+        id="wallZ"
+        geometry="primitive: box;
+            height: 10;
+            depth: 1;
+            width: 10;"
+        position="5 5 -0.5"
+        material="color: white"
+      ></a-entity>
+      <a-entity
+        id="wallY"
+        geometry="primitive: box;
+            height: 1;
+            depth: 10;
+            width: 10;"
+        position="5 -0.5 5"
+        material="color: white"
+      ></a-entity>
       <!-- Default camera height has y val 1.6, all changes to y val are added to 1.6 -->
-      <a-entity position="0 2 5">
-        <a-camera active="false"></a-camera>
+      <a-entity position="5 2 5">
+        <a-camera active="true"></a-camera>
       </a-entity>
     </a-scene>
   </body>
