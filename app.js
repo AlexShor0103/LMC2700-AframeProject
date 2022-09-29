@@ -1,7 +1,3 @@
-let x = 1;
-
-
-
 AFRAME.registerComponent('pile-remover', {
     init: function () {
         
@@ -19,3 +15,4 @@ AFRAME.registerComponent('pile-remover', {
         });
     }
 });
+
