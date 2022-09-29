@@ -5,7 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-
+    
+    <script>
+      AFRAME.registerComponent('modify-materials', {
+        init: function () {
+          // Wait for model to load.
+          this.el.addEventListener('model-loaded', () => {
+            // Grab the mesh / scene.
+            const obj = this.el.getObject3D('mesh');
+            // Go over the submeshes and modify materials we want.
+            obj.traverse(node => {
+              if (node.name.indexOf('ship') !== -1) {
+                node.material.color.set('red');
+              }
+            });
+          });
+        }
+      });
+    </script>
     <title>Document</title>
   </head>
   <body>
@@ -49,6 +66,11 @@
       <a-entity position="5 2 5">
         <a-camera active="true"></a-camera>
       </a-entity>
+      <a-assest>
+        <a-assest-item id="candy1-obj" src="components/candy.obj"></a-assest>
+        <a-asset-item id="candy1-mtl" src="components/candy.obj"></a-asset-item>
+      </a-assest>
+      <a-entity obj-model="obj: #candy1-obj; mtl: #candy1-mtl"></a-entity>
     </a-scene>
   </body>
 </html>
