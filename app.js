@@ -8,7 +8,7 @@ AFRAME.registerComponent('pile-remover', {
             console.log(repeat.x + " " + repeat.y);
             console.log("Aahha poopy face " + this.id + " " + scale.x);
             this.setAttribute('scale', {x: 0.85 * scale.x, y: 0.85 * scale.y, z: 0.85 * scale.z});
-            let repeatNew = repeat.x * 0.75;
+            let repeatNew = repeat.x * 0.85;
             console.log(repeatNew);
             console.log("${repeatNew}");
             this.setAttribute('material', `repeat: ${repeatNew} ${repeatNew}`);
@@ -25,10 +25,18 @@ AFRAME.registerComponent('funfact-clicker', {
 
     init: function() {
         // let clicked = false;
-        let textBox1 = "gg it worked";
-        let textBox2 = "boo";
-        let textBox3 = "ashas";
-        let finalVal ="you screwed up";
+        let textBox1 = `In our 3D graphic scene, we wanted to recreate a notable artwork done by Felix Gonzalez-Torres. 
+        This particular piece is called “Untitled” (Portrait of Ross in L.A.) and represents the passing of his lover who unfortunately was taken by AIDS.`;
+        
+        let textBox2 = `The piece is a pile of candy that roughly weighs around 175lbs and represents the body weight of Torres's lover.
+        The exhibit is meant to be interactive and allows individuals to remove a piece of candy, a representation of the virus taking Torres's lover piece by piece.`;
+        
+        let textBox3 = `The candy doesn't only represent the virus exhausting the body of his lover but the love that remains.
+        Candy has long been tied to affection and is often given to loved ones. While the candy is eaten the love remains.`;
+        
+        let textBox4 = `This 3D graphic scene is meant to create a VR experience that imitates the exhibit whichis currently held at the Art Institute of Chicago.
+        You can click on the candy pile and it will reduce in size until there's nothing left.`;
+        let finalVal ="blankString";
         
         let clickCheck = this.data.clicked;
         let candy1 = document.querySelector('#candy2');
@@ -48,25 +56,25 @@ AFRAME.registerComponent('funfact-clicker', {
             switch (selected) {
                 case "candy1":
                     finalVal = textBox1;
-                    console.log(finalVal + " from candy1");
                     break;
                 case "candy2":
                     finalVal = textBox2;
-                    console.log(finalVal + " from candy2");
                     break;
                 case "candy3":
-                    finalVal = textBox3;
-                    console.log(finalVal + " from candy3");
+                    finalVal = textBox3
+                    break;
+                case "candy4":
+                    finalVal = textBox4;
                     break;
                 default:
                     finalVal = "you screwed up";
                     break;
             }
 
-            let target = document.querySelector('#sampleText');
+            let target = document.querySelector('#textBox');
             console.log(selected + ": " + finalVal);
             //if not currently on, sets correct value, and turns it on, then sets flag var to on
-            target.setAttribute('value', finalVal);
+            target.setAttribute('text', `value: ${finalVal}`);
             target.setAttribute('scale', "1 1 1");
         });
 
