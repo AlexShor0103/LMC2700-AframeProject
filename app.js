@@ -1,23 +1,18 @@
-let x = 1;
-
-
-AFRAME.registerComponent('cursor-listener', {
-    init: function () {
-      var lastIndex = -1;
-      var COLORS = ['red', 'green', 'blue'];
-      this.el.addEventListener('click', function (evt) {
-        // lastIndex = (lastIndex + 1) % COLORS.length;
-        // this.setAttribute('material', 'color', COLORS[lastIndex]);
-        console.log('I was clicked at: ', evt.detail.intersection.point);
-      });
-    }
-  });
-
 AFRAME.registerComponent('pile-remover', {
     init: function () {
+        
         this.el.addEventListener('click', function () {
-            console.log("Aahha poopy face");
-            this.setAttribute('visible', 'false');
+            
+            let scale = this.getAttribute('scale');
+            let repeat = this.getAttribute('material').repeat;
+            console.log(repeat.x + " " + repeat.y);
+            console.log("Aahha poopy face " + this.id + " " + scale.x);
+            this.setAttribute('scale', {x: 0.85 * scale.x, y: 0.85 * scale.y, z: 0.85 * scale.z});
+            let repeatNew = repeat.x * 0.75;
+            console.log(repeatNew);
+            console.log("${repeatNew}");
+            this.setAttribute('material', `repeat: ${repeatNew} ${repeatNew}`);
         });
     }
 });
+
