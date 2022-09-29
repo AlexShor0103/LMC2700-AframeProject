@@ -11,9 +11,8 @@
   <body>
     <a-scene background="color: #DE7C5A">
       <a-assets>
-        <img id="candy" src="candy.jpg" />
-        <img id="candy2" src="anotherCandy.jpg" />
-        <img id="candyRef" src="candyRef.jpg" />
+        <img id="candyPileRef" src="anotherCandy.jpg" />
+        <img id="candyWrapper" src="candy.jpg" />
       </a-assets>
 
       <!-- Default camera height has y val 1.6, all changes to y val are added to 1.6 -->
@@ -29,7 +28,7 @@
           vertex-a: 4 0 0; 
           vertex-b: 0 2 0; 
           vertex-c: 0 0 4;"
-        material="src: #candy2; repeat: 4 4"
+        material="src: #candyPileRef; repeat: 4 4"
         pile-remover
       ></a-entity>
       <a-entity
@@ -40,6 +39,44 @@
             width: 1;"
         position="-0.5 5 5"
         material="color: white"
+      ></a-entity>
+      <a-entity
+        id="candy1"
+        geometry="primitive: sphere;
+          radius: 0.25;"
+        material="color: blue"
+        position="2 0.25 2"
+        funfact-clicker="baseColor: blue"
+      ></a-entity>
+      <a-entity
+        id="candy2"
+        geometry="primitive: sphere;
+          radius: 0.25;"
+        material="color: yellow"
+        position="4 0.25 2"
+        funfact-clicker="baseColor: yellow"
+      ></a-entity>
+      <a-entity
+        id="candy3"
+        geometry="primitive: sphere;
+          radius: 0.25;"
+        material="color: red"
+        position="6 0.25 2"
+        funfact-clicker="baseColor: red"
+      ></a-entity>
+      <a-text
+        id="sampleText"
+        value="Now Interactable"
+        color="red"
+        position="5 5 5"
+        scale="1 3 1"
+        geometry="primitive: plane"
+        click-to-disappear
+      ></a-text>
+      <a-entity
+        text="value: AHHHH"
+        geometry="primitive: plane"
+        material="color: red"
       ></a-entity>
       <a-entity
         id="wallZ"
