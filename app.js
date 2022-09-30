@@ -1,30 +1,30 @@
+
+// Function to make candy pile progressively smaller on consecutive clicks until a certain point is reached
 AFRAME.registerComponent('pile-remover', {
     init: function () {
         
         this.el.addEventListener('click', function () {
-            
             let scale = this.getAttribute('scale');
             let repeat = this.getAttribute('material').repeat;
-            console.log("Aahha poopy face " + this.id + " " + scale.x);
-            this.setAttribute('scale', {x: 0.85 * scale.x, y: 0.85 * scale.y, z: 0.85 * scale.z});
-            let repeatNew = repeat.x * 0.85;
+            let scaleVar = 0.85
+            this.setAttribute('scale', {x: scaleVar * scale.x, y: scaleVar * scale.y, z: scaleVar * scale.z});
+            let repeatNew = repeat.x * scaleVar;
             this.setAttribute('material', `repeat: ${repeatNew} ${repeatNew}`);
-            if (scale.x * 0.85 < 0.35) {
+            // if it gets to small, make it "invisible"
+            if (scale.x * scaleVar < 0.25) {
                 this.setAttribute('scale', "0 0 0");
             }
         });
     }
 });
 
-
+// the method for making the candies clickable/hoverable
 AFRAME.registerComponent('funfact-clicker', {
     schema: {
-        clicked: {type: 'boolean', default: false},
         baseColor: {type: 'string', default: 'orange'}
     },
-
+    //sets the text that will in turn be put into finalVal based on which is clicked
     init: function() {
-        // let clicked = false;
         let textBox1 = `In our 3D graphic scene, we wanted to recreate a notable artwork done by Felix Gonzalez-Torres. 
         This particular piece is called “Untitled” (Portrait of Ross in L.A.) and represents the passing of his lover who unfortunately was taken by AIDS.`;
         
@@ -37,18 +37,7 @@ AFRAME.registerComponent('funfact-clicker', {
         let textBox4 = `This 3D graphic scene is meant to create a VR experience that imitates the exhibit whichis currently held at the Art Institute of Chicago.
         You can click on the candy pile and it will reduce in size until there's nothing left.`;
         let finalVal ="blankString";
-        
-        let clickCheck = this.data.clicked;
-        let candy1 = document.querySelector('#candy2');
-        let candy2 = document.querySelector('#candy2');
-        // candy2.setAttribute('clicked', false);
-        let candy3 = document.querySelector('#candy3').getAttribute('funfact-clicker');
-        // candy3.setAttribute('clicked', false);
-        console.log(candy2);
-        console.log(candy3);
-        
-        
-
+        //the click function that loads the correct textbox
         this.el.addEventListener('click', function () {
             let selected = this.id.toString();
             
@@ -73,13 +62,13 @@ AFRAME.registerComponent('funfact-clicker', {
 
             let target = document.querySelector('#textBox');
             console.log(selected + ": " + finalVal);
-            //if not currently on, sets correct value, and turns it on, then sets flag var to on
             target.setAttribute('text', `value: ${finalVal}`);
             target.setAttribute('scale', "1 1 1");
         });
 
+        //hover method to clarify which one the user is about to click
         this.el.addEventListener('mouseenter', function () {
-            this.setAttribute('material', 'color: #A4E2CC');
+            this.setAttribute('material', 'color: #F4E2FC');
         });
 
         this.el.addEventListener('mouseleave', function () {
@@ -88,10 +77,10 @@ AFRAME.registerComponent('funfact-clicker', {
     }
 });
 
+//method for making the textbox disappear on click
 AFRAME.registerComponent('click-to-disappear', {
     init: function () {
         this.el.addEventListener('click', function () {
-            // console.log("big weenis");
             this.setAttribute('scale', "0 0 0");
         });
     }
