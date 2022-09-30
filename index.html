@@ -13,61 +13,125 @@
   <body>
     <a-scene background="color: #DE7C5A">
       <a-assets>
-        <img id="candy" src="candy.jpg" />
-        <img id="candy2" src="anotherCandy.jpg" />
-        <img id="candyRef" src="candyRef.jpg" />
+        <img id="candyPileRef" src="components/anotherCandy.jpg" />
+        <img id="candyWrapper1" src="components/candyWrapper.jpg" />
+        <img id="candyWrapper2" src="components/candyWrapper2.jpg" />
+        <img id="candyWrapperSilver" src="components/candyWrapperSilver.jpg" />
+        <a-asset-item id="candyPiece-obj" src="components/candy.obj"></a-asset-item>
+        <a-asset-item id="candyPiece-mtl" src="components/candy.mtl"></a-asset-item>
+        <a-asset-item id="candy-obj" src="/components/candy.obj"></a-asset-item>
+        <a-asset-item id="candy-mtl" src="/components/candy.mtl"></a-asset-item>
       </a-assets>
-
+    
       <!-- Default camera height has y val 1.6, all changes to y val are added to 1.6 -->
-      <a-entity position="5 2 5">
+      <a-entity position="5 1 5" rotation="0 45 0">
         <a-camera active="true">
           <a-cursor color="#DE7C5A" fuse="false"></a-cursor>
         </a-camera>
       </a-entity>
 
       <a-entity
-        id="candyPile3"
+        light="color: #cfb9b0; type: point; intensity: 0.960; castShadow: true"
+        position="2 6 5"
+      ></a-entity>
+      
+      <a-entity
+        light="color: #AE5F4E; type: ambient; intensity: 0.5;">
+
+      </a-entity>
+
+      <!--candy pile-->
+      <a-entity
+        id="candyPile"
         geometry="primitive: triangle; 
           vertex-a: 4 0 0; 
           vertex-b: 0 2 0; 
           vertex-c: 0 0 4;"
-        material="src: #candy2; repeat: 4 4"
+        material="src: #candyPileRef; repeat: 4 4; shader: phong"
         pile-remover
       ></a-entity>
+      
+      <!--Walls-->
       <a-entity
         id="wallX"
         geometry="primitive: box;
-            height: 10;
-            depth: 10;
+            height: 20;
+            depth: 20;
             width: 1;"
-        position="-0.5 5 5"
-        material="color: white"
+        position="-0.5 10 10"
+        material="color: white;"
       ></a-entity>
       <a-entity
         id="wallZ"
         geometry="primitive: box;
-            height: 10;
+            height: 20;
             depth: 1;
-            width: 10;"
-        position="5 5 -0.5"
-        material="color: white"
+            width: 20;"
+        position="10 10 -0.5"
+        material="color: white;"
       ></a-entity>
       <a-entity
         id="wallY"
         geometry="primitive: box;
             height: 1;
-            depth: 10;
-            width: 10;"
-        position="5 -0.5 5"
+            depth: 20;
+            width: 20;"
+        position="10 -0.5 10"
         material="color: white"
       ></a-entity>
-      <a-assets>
-        <a-asset-item id="candy-obj" src="/components/candy.obj"></a-asset-item>
-        <a-asset-item id="candy-mtl" src="/components/candy.mtl"></a-asset-item>
-      </a-assets>
+      
     
       <a-entity obj-model="obj: #candy-obj; mtl: #candy-mtl" material="color: #00ffff"></a-entity>
 
+
+      <!--candies-->
+      <a-entity
+        id="candy1"
+        geometry="primitive: sphere;
+          radius: 0.25;"
+        material="color: blue"
+        position="1.03 0.25 4.22"
+        funfact-clicker="baseColor: blue"
+        shadow="receive: true"
+      ></a-entity>
+      <a-entity
+        id="candy2"
+        geometry="primitive: sphere;
+          radius: 0.25;"
+        material="color: yellow"
+        position="2.615 0.25 3.371"
+        funfact-clicker="baseColor: yellow"
+      ></a-entity>
+      <a-entity
+        id="candy3"
+        geometry="primitive: sphere;
+          radius: 0.25;"
+        material="color: red"
+        position="3.416 0.25 1.836"
+        funfact-clicker="baseColor: red"
+      ></a-entity>
+
+      <a-entity
+        id="candy4"
+        geometry="primitive: sphere;
+          radius: 0.25;"
+        material="color: orange"
+        position="4.212 0.25 0.925"
+        funfact-clicker="baseColor: orange"
+      ></a-entity>
+
+      <!--TextBox-->
+      <a-entity
+        id="textBox"
+        geometry="primitive: plane; width: 5; height: 1.75"
+        position="2.3 2.5 2.3"
+        rotation="0 45 0"
+        material="src: #candyWrapperSilver; opacity: 0.95; emissiveIntensity: 0.3; emissive: #FFF"
+        scale="1 1 1"
+        text="value: This is an interactive image. Below are 4 candies, press them for more information, and press this wrapper to close this text;
+        color: black; align: center; width: 4; font: exo2bold"
+        click-to-disappear
+      ></a-entity>
     </a-scene>
   </body>
 </html>
