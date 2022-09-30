@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="app.js"></script>
- 
-
     <title>Document</title>
   </head>
   <body>
@@ -17,8 +15,6 @@
         <img id="candyWrapper1" src="components/candyWrapper.jpg" />
         <img id="candyWrapper2" src="components/candyWrapper2.jpg" />
         <img id="candyWrapperSilver" src="components/candyWrapperSilver.jpg" />
-        <a-asset-item id="candyPiece-obj" src="components/candy.obj"></a-asset-item>
-        <a-asset-item id="candyPiece-mtl" src="components/candy.mtl"></a-asset-item>
         <a-asset-item id="candy-obj" src="/components/candy.obj"></a-asset-item>
         <a-asset-item id="candy-mtl" src="/components/candy.mtl"></a-asset-item>
       </a-assets>
@@ -34,10 +30,8 @@
         light="color: #cfb9b0; type: point; intensity: 0.960; castShadow: true"
         position="2 6 5"
       ></a-entity>
-      
-      <a-entity
-        light="color: #AE5F4E; type: ambient; intensity: 0.5;">
 
+      <a-entity light="color: #AE5F4E; type: ambient; intensity: 0.5;">
       </a-entity>
 
       <!--candy pile-->
@@ -50,7 +44,7 @@
         material="src: #candyPileRef; repeat: 4 4; shader: phong"
         pile-remover
       ></a-entity>
-      
+
       <!--Walls-->
       <a-entity
         id="wallX"
@@ -87,37 +81,41 @@
       <!--candies-->
       <a-entity
         id="candy1"
+        obj-model="obj: #candy-obj"
         geometry="primitive: sphere;
           radius: 0.25;"
         material="color: blue"
         position="1.03 0.25 4.22"
         funfact-clicker="baseColor: blue"
-        shadow="receive: true"
+        rotation="0 45 0"
+        scale="0.23 0.23 0.23"
       ></a-entity>
       <a-entity
         id="candy2"
-        geometry="primitive: sphere;
-          radius: 0.25;"
+        obj-model="obj: #candy-obj"
         material="color: yellow"
         position="2.615 0.25 3.371"
         funfact-clicker="baseColor: yellow"
+        scale="0.23 0.23 0.23"
       ></a-entity>
       <a-entity
         id="candy3"
-        geometry="primitive: sphere;
-          radius: 0.25;"
+        obj-model="obj: #candy-obj"
         material="color: red"
         position="3.416 0.25 1.836"
         funfact-clicker="baseColor: red"
+        rotation="0 -20 0"
+        scale="0.23 0.23 0.23"
       ></a-entity>
 
       <a-entity
         id="candy4"
-        geometry="primitive: sphere;
-          radius: 0.25;"
+        obj-model="obj: #candy-obj"
         material="color: orange"
-        position="4.212 0.25 0.925"
+        position="4.45 0.25 0.925"
         funfact-clicker="baseColor: orange"
+        rotation="0 65 0"
+        scale="0.23 0.23 0.23"
       ></a-entity>
 
       <!--TextBox-->
